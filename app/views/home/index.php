@@ -1,1 +1,3 @@
-<h1>Selamat datang diwebsite saya</h1>
+<div class="container-fluid">	
+<div class="jumbotron"></div>
+</div>

@@ -12,14 +12,14 @@ class Database{
 	public function __construct()
 	{
 		///data source name
-		$dsn ='mysql:host='.$this->$host.'dbname='.$this->$db_name;
+		$dsn ='mysql:host='. $this->host .';dbname='.$this->db_name;
 		///option digunakan untuk mengoptimasi koneksi ke database 
 		$option = [
 			PDO::ATTR_PERSISTENT=>true, ////untuk membuat koneksi databse terjaga terus
 			PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
 		];
 		try{
-			$this->dbh = new PDO($dsn, $this->$user, $this->$pass, $option);
+			$this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
 		}catch(PDOException $e){  #$e = error
 			die($e->getMessage()); #pesan error
 		}
@@ -53,16 +53,19 @@ class Database{
 	 }
 
 	 ////eksekusi data
-	 public function execution(){
-	 	$this->stmt->execute;
+	 public function execute()
+	 {
+	 	$this->stmt->execute();
 	 }
 	///untuk hasil data banyak
-	 public function resultSet(){
+	 public function resultSet()
+	 {
 	 	$this->execute();
-	 	return $this->stmt->fetcAll(PDO::FETCH_ASSOC);
+	 	return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 	 }
 	 ///untuk hasil data tunggal
-	 public function single(){
+	 public function single()
+	 {
 	 	$this->execute();
 	 	return $this->stmt->fetc(PDO::FETCH_ASSOC);
 	 }

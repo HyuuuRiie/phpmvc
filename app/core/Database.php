@@ -48,7 +48,7 @@ class Database{
 	 				$type = PDO::PARAM_STR;
 	 		}
 	 	}
-	 	$this->$stmt->bindValue($param, $value, $type); ////misalkan masuk data 1, dicek apa tipenya
+	 	$this->stmt->bindValue($param, $value, $type); ////misalkan masuk data 1, dicek apa tipenya
 	 	#dibind terlebih supaya terhindar dari sql injection, karena query dieksekusi setelah stirng dibersihkan dulu
 	 }
 
@@ -67,7 +67,10 @@ class Database{
 	 public function single()
 	 {
 	 	$this->execute();
-	 	return $this->stmt->fetc(PDO::FETCH_ASSOC);
+	 	return $this->stmt->fetch(PDO::FETCH_ASSOC);
+	 }
+	 public function rowCount(){
+	 	return $this->stmt->rowCount();
 	 }
 
-}
+} 	
